@@ -1,13 +1,36 @@
-body {
+* {
+  padding: 0;
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  box-sizing: border-box;
 }
-
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+.headingPri {
+  font-size: 30pt;
+  font-weight: bold;
+}
+.headingSec {
+  font-size: 24pt;
+  font-weight: bold;
+}
+.sectionHeading {
+  font-size: 18pt;
+  font-weight: bold;
+}
+.subTitle {
+  font-size: 18pt;
+}
+.cardTitle {
+  font-size: 15pt;
+  font-weight: bold;
+}
+.cardCopy {
+  font-size: 15pt;
+  font-weight: lighter;
+}
+.bodyCopy {
+  font-size: 14pt;
+  font-weight: lighter;
+}
+.timeStamp {
+  font-size: 12pt;
+  font-weight: lighter;
 }
