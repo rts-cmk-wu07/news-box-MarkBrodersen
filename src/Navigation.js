@@ -4,7 +4,8 @@ import FeatherIcon from "feather-icons-react";
 
 import { Link } from "react-router-dom";
 
-const Navigation = ({ colors }) => {
+import Settings from "./Settings";
+const Navigation = ({ data, colors, handleThemeChange }) => {
   const styles = {
     links: css`
       color: ${colors.primary_1};
@@ -14,7 +15,21 @@ const Navigation = ({ colors }) => {
       border: none;
     `,
   };
-  const handleSettingsChange = () => {};
+  const handleSettingsPopup = () => {
+    const element = document.querySelector(".settingsContainerRef");
+    const classes = element.classList;
+    element.classList.toggle("settingsContainerr");
+    element.classList.toggle("settingsContainer--disable");
+    if (classes.contains("settingsContainer--disable")) {
+      setTimeout(() => {
+        element.style.display = "none";
+      }, 502);
+    }
+    if (classes.contains("settingsContainerr")) {
+      element.style.display = "block";
+    }
+  };
+
   return (
     <div>
       <ul>
@@ -29,11 +44,16 @@ const Navigation = ({ colors }) => {
           </Link>
         </li>
         <li>
-          <button css={styles.settingsIcon} onClick={handleSettingsChange}>
+          <button css={styles.settingsIcon} onClick={handleSettingsPopup}>
             <FeatherIcon icon={"settings"} />
           </button>
         </li>
       </ul>
+      <Settings
+        data={data}
+        colors={colors}
+        handleThemeChange={handleThemeChange}
+      />
     </div>
   );
 };

@@ -1,11 +1,22 @@
 /** @jsxImportSource @emotion/react */
 import { css } from "@emotion/react";
 
-const Settings = ({ handleThemeChange }) => {
+import SettingsCheckbox from "./Comps/SettingsCheckbox";
+
+const Settings = ({ data, colors, handleThemeChange }) => {
   const styles = {
-    radioButtonContainer: css`
+    settingsContainer: css`
+      opacity: 0;
+      position: sticky;
+      height: 0;
+
+      background: black;
+    `,
+    toggleButtonContainer: css`
       display: flex;
       flex-direction: column;
+      justify-content: center;
+      align-items: center;
       width: 90%;
       border-radius: 24px;
       background: white;
@@ -18,29 +29,14 @@ const Settings = ({ handleThemeChange }) => {
       border: transparent;
     `,
   };
+  const sections = [...new Set(data.map((item) => item.section))];
   return (
-    <div>
-      <div css={styles.radioButtonContainer}>
-        <div>
-          <h3>Europe</h3>
-          <input type="checkbox" />
-        </div>
-        <div>
-          <h3>Health</h3>
-          <input type="checkbox" />
-        </div>
-        <div>
-          <h3>Sport</h3>
-          <input type="checkbox" />
-        </div>
-        <div>
-          <h3>Business</h3>
-          <input type="checkbox" />
-        </div>
-        <div>
-          <h3>Travel</h3>
-          <input type="checkbox" />
-        </div>
+    <div className="settingsContainer--disable settingsContainerRef">
+      <div css={styles.toggleButtonContainer}>
+        {sections &&
+          sections.map((section) => (
+            <SettingsCheckbox colors={colors} key={section} title={section} />
+          ))}
       </div>
       <button css={styles.button} onClick={handleThemeChange}>
         Toggle Dark Mode
