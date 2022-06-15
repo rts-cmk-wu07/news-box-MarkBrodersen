@@ -1,7 +1,7 @@
 /** @jsxImportSource @emotion/react */
 import { css } from "@emotion/react";
 
-import ArkivSections from "./ArkivSections";
+import ArkivSections from "../ArkivSections";
 const Arkiv = ({ data, colors }) => {
   const styles = {
     test: css`

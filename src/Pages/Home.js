@@ -1,6 +1,6 @@
-import apiContext from "./context/apiContext";
+import apiContext from "../context/apiContext";
 import { useContext } from "react";
-import ArticleSections from "./ArticleSections";
+import ArticleSections from "../ArticleSections";
 const Home = () => {
   const data = useContext(apiContext);
   const sections = [...new Set(data.map((item) => item.section))];

@@ -1,7 +1,6 @@
 /** @jsxImportSource @emotion/react */
 import { css } from "@emotion/react";
 import Feathericon from "feather-icons-react";
-import { useState } from "react";
 import { useContext } from "react";
 import Articles from "./Comps/Articles";
 import ThemeContext from "./context/themeContext";
@@ -71,11 +70,9 @@ const ArticleSections = ({ section }) => {
       display: flex;
     `,
   };
-  var [articalData, setArticalData] = useState(data);
   const filtedArticlas = data.filter((artical) => {
     return section === artical.section;
   });
-
   console.log(filtedArticlas);
 
   return (
@@ -96,10 +93,10 @@ const ArticleSections = ({ section }) => {
         </div>
         <input type="checkbox" name={section} id={section} />
       </label>
-      {articalData &&
-        articalData.map((art, index) => (
+      {filtedArticlas &&
+        filtedArticlas.map((art, index) => (
           <div css={styles.articleContainer} key={index}>
-            <Articles section={section} />
+            <Articles data={filtedArticlas} />
           </div>
         ))}
     </section>
