@@ -8,7 +8,7 @@ const Home = () => {
     <div>
       {sections &&
         sections.map((DropDown) => (
-          <ArticleSections key={DropDown} data={DropDown} />
+          <ArticleSections key={DropDown} section={DropDown} />
         ))}
     </div>
   );
