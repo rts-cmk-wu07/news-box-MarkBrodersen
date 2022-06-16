@@ -1,18 +1,31 @@
 /** @jsxImportSource @emotion/react */
 import { css } from "@emotion/react";
+import { useContext } from "react";
+import ThemeContext from "../context/themeContext";
+import apiContext from "../context/apiContext";
 
 import ArkivSections from "../ArkivSections";
-const Arkiv = ({ data, colors }) => {
+const Arkiv = () => {
+  const data = useContext(apiContext);
+  const colors = useContext(ThemeContext);
+
   const styles = {
     test: css`
-      color: ${colors.primary_1};
+      color: ${colors.text_1};
     `,
   };
+  const sections = [...new Set(data.map((item) => item.section))];
+
+  const filtedArtical = data.filter((artical) => {
+    return sections === artical.section;
+  });
   return (
     <div>
       <div css={styles.test}>322</div>
-      {data &&
-        data.map((section) => <ArkivSections colors={colors} data={data} />)}
+      {filtedArtical &&
+        filtedArtical.map((section) => (
+          <ArkivSections key={section} colors={colors} data={data} />
+        ))}
     </div>
   );
 };

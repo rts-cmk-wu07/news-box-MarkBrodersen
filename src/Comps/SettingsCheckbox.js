@@ -8,6 +8,7 @@ const SettingsCheckbox = ({ title, colors }) => {
       height: 2rem;
       padding: 25px;
       margin: 0 auto;
+      color: ${colors.text_1};
       display: flex;
       justify-content: space-between;
       align-items: center;

@@ -10,6 +10,9 @@ const ArticleSections = ({ section }) => {
   const data = useContext(apiContext);
   const colors = useContext(ThemeContext);
   const styles = {
+    title: css`
+      color: ${colors.text_1};
+    `,
     container: css`
       display: flex;
     `,
@@ -66,14 +69,19 @@ const ArticleSections = ({ section }) => {
       width: 12px;
       border-radius: 0 0 0 1px; ;
     `,
+    checkbox: css`
+      display: flex;
+      & :checked + .articleContainer {
+        display: none;
+      }
+    `,
     articleContainer: css`
       display: flex;
     `,
   };
-  const filtedArticlas = data.filter((artical) => {
+  const filtedArtical = data.filter((artical) => {
     return section === artical.section;
   });
-  console.log(filtedArticlas);
 
   return (
     <section>
@@ -89,14 +97,19 @@ const ArticleSections = ({ section }) => {
               <span css={[styles.line_5, styles.line]}></span>
             </div>
           </div>
-          <h2>{section}</h2>
+          <h2 css={styles.title}>{section}</h2>
         </div>
-        <input type="checkbox" name={section} id={section} />
+        <input
+          css={styles.checkbox}
+          type="checkbox"
+          name={section}
+          id={section}
+        />
       </label>
-      {filtedArticlas &&
-        filtedArticlas.map((art, index) => (
-          <div css={styles.articleContainer} key={index}>
-            <Articles data={filtedArticlas} />
+      {filtedArtical &&
+        filtedArtical.map((data, index) => (
+          <div key={index} css={styles.articleContainer}>
+            <Articles data={data} colors={colors} />
           </div>
         ))}
     </section>

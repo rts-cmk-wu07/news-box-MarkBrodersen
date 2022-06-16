@@ -1,38 +1,33 @@
 /** @jsxImportSource @emotion/react */
 import { css } from "@emotion/react";
 import FeatherIcon from "feather-icons-react";
-
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 
 import Settings from "./Settings";
-const Navigation = ({ data, colors, handleThemeChange }) => {
+const Navigation = ({ data, colors }) => {
   const styles = {
     links: css`
       color: ${colors.primary_1};
       text-decoration: none;
+      z-index: 300000;
     `,
     settingsIcon: css`
       border: none;
     `,
-  };
-  const handleSettingsPopup = () => {
-    const element = document.querySelector(".settingsContainerRef");
-    const classes = element.classList;
-    element.classList.toggle("settingsContainerr");
-    element.classList.toggle("settingsContainer--disable");
-    if (classes.contains("settingsContainer--disable")) {
-      setTimeout(() => {
-        element.style.display = "none";
-      }, 502);
-    }
-    if (classes.contains("settingsContainerr")) {
-      element.style.display = "block";
-    }
+    navContainer: css`
+      display: flex;
+      justify-content: space-between;
+      & li {
+        list-style: none;
+      }
+    `,
   };
 
+  const params = useParams();
+  console.log(params);
   return (
     <div>
-      <ul>
+      <ul css={styles.navContainer}>
         <li>
           <Link to="home" css={styles.links}>
             Home
@@ -44,16 +39,10 @@ const Navigation = ({ data, colors, handleThemeChange }) => {
           </Link>
         </li>
         <li>
-          <button css={styles.settingsIcon} onClick={handleSettingsPopup}>
-            <FeatherIcon icon={"settings"} />
-          </button>
+          <FeatherIcon css={styles.settingsIcon} icon={"settings"} />
         </li>
       </ul>
-      <Settings
-        data={data}
-        colors={colors}
-        handleThemeChange={handleThemeChange}
-      />
+      <Settings data={data} colors={colors} />
     </div>
   );
 };
