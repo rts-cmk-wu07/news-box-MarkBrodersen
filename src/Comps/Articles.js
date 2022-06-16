@@ -13,6 +13,11 @@ const Articles = ({ data, colors }) => {
       text-overflow: ellipsis;
       overflow: hidden;
     `,
+    img: css`
+      height: 4.5rem;
+      width: 4.5rem;
+      border-radius: 100px;
+    `,
     text: css`
       overflow: hidden;
       text-overflow: ellipsis;
@@ -22,14 +27,22 @@ const Articles = ({ data, colors }) => {
       -webkit-box-orient: vertical;
     `,
   };
-  const media = data.media[0];
-  // const multiMedia = media["media-metadata"];
-  // const firstPic = multiMedia[0];
-  // const firstPicUrl = firstPic.url;
-  // https://via.placeholder.com/150
+  console.log(data);
+  const findImage = (router) => {
+    if (router !== undefined) {
+      return (
+        <img
+          css={styles.img}
+          src={router["media-metadata"][0].url}
+          alt={router.copyright}
+        />
+      );
+    }
+    return <div css={styles.imgDiv}></div>;
+  };
   return (
     <article css={styles.article}>
-      <img src={media} alt="" />
+      {findImage(data.media[0])}
       <div>
         <h1 css={styles.title}>{data.title}</h1>
         <p css={styles.text}>{data.abstract}</p>

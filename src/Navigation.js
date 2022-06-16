@@ -1,7 +1,7 @@
 /** @jsxImportSource @emotion/react */
 import { css } from "@emotion/react";
 import FeatherIcon from "feather-icons-react";
-import { Link, useParams } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 import Settings from "./Settings";
 const Navigation = ({ data, colors }) => {
@@ -23,8 +23,6 @@ const Navigation = ({ data, colors }) => {
     `,
   };
 
-  const params = useParams();
-  console.log(params);
   return (
     <div>
       <ul css={styles.navContainer}>
