@@ -4,9 +4,13 @@ import { css } from "@emotion/react";
 const Articles = ({ data, colors }) => {
   const styles = {
     article: css`
+      display: flex;
       width: 400px;
       margin: 15px 0;
       color: ${colors.text_1};
+    `,
+    textContainer: css`
+      width: 320px;
     `,
     title: css`
       white-space: nowrap;
@@ -40,10 +44,14 @@ const Articles = ({ data, colors }) => {
     }
     return <div css={styles.imgDiv}></div>;
   };
+
+  const urlHandler = () => {
+    window.location.href = data.url;
+  };
   return (
-    <article css={styles.article}>
+    <article css={styles.article} onClick={urlHandler}>
       {findImage(data.media[0])}
-      <div>
+      <div css={styles.textContainer}>
         <h1 css={styles.title}>{data.title}</h1>
         <p css={styles.text}>{data.abstract}</p>
       </div>

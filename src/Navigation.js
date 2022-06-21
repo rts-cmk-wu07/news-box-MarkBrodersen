@@ -4,7 +4,7 @@ import FeatherIcon from "feather-icons-react";
 import { Link } from "react-router-dom";
 
 import Settings from "./Settings";
-const Navigation = ({ data, colors }) => {
+const Navigation = ({ data, colors, handleThemeChange }) => {
   const styles = {
     links: css`
       color: ${colors.primary_1};
@@ -40,7 +40,11 @@ const Navigation = ({ data, colors }) => {
           <FeatherIcon css={styles.settingsIcon} icon={"settings"} />
         </li>
       </ul>
-      <Settings data={data} colors={colors} />
+      <Settings
+        data={data}
+        colors={colors}
+        handleThemeChange={handleThemeChange}
+      />
     </div>
   );
 };
