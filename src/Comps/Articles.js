@@ -1,5 +1,6 @@
 /** @jsxImportSource @emotion/react */
 import { css } from "@emotion/react";
+import Feathericon from "feather-icons-react";
 
 const Articles = ({ data, colors }) => {
   const styles = {
@@ -12,15 +13,16 @@ const Articles = ({ data, colors }) => {
     textContainer: css`
       width: 320px;
     `,
+    img: css`
+      display: inline-block;
+      height: 4.5rem;
+      width: 4.5rem;
+      border-radius: 100px;
+    `,
     title: css`
       white-space: nowrap;
       text-overflow: ellipsis;
       overflow: hidden;
-    `,
-    img: css`
-      height: 4.5rem;
-      width: 4.5rem;
-      border-radius: 100px;
     `,
     text: css`
       overflow: hidden;
@@ -31,7 +33,6 @@ const Articles = ({ data, colors }) => {
       -webkit-box-orient: vertical;
     `,
   };
-  console.log(data);
   const findImage = (router) => {
     if (router !== undefined) {
       return (
@@ -41,8 +42,9 @@ const Articles = ({ data, colors }) => {
           alt={router.copyright}
         />
       );
+    } else {
+      return <Feathericon icon="info" css={styles.img} />;
     }
-    return <div css={styles.imgDiv}></div>;
   };
 
   const urlHandler = () => {

@@ -30,6 +30,7 @@ const ArticleSections = ({ section }) => {
       position: relative;
     `,
     square: css`
+      margin: 0 0 -4px 0;
       transform: rotate(45deg);
     `,
     line: css`
