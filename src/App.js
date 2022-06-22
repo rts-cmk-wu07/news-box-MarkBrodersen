@@ -66,14 +66,14 @@ function App() {
 
   const sectionList = sections.sort();
 
-  const [SectionsActive, setSectionsActive] = useState(sectionList);
+  const [sectionsActive, setSectionsActive] = useState(sectionList);
   return (
     <div>
       <apiContext.Provider value={data}>
         <ThemeContext.Provider value={colors}>
           <SectionContext.Provider
             value={{
-              sections: { sectionList, SectionsActive },
+              sections: { sectionList, sectionsActive },
               setSectionsActive,
             }}
           >
