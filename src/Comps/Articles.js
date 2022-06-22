@@ -6,12 +6,16 @@ const Articles = ({ data, colors }) => {
   const styles = {
     article: css`
       display: flex;
-      width: 400px;
-      margin: 15px 0;
+      justify-content: space-between;
+      align-items: center;
+      width: 100%;
+      padding: 15px 0;
       color: ${colors.text_1};
+      border-bottom: 1px solid ${colors.secondary_2};
     `,
     textContainer: css`
       width: 320px;
+      padding-right: 15px;
     `,
     img: css`
       display: inline-block;
