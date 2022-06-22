@@ -11,9 +11,6 @@ const Navigation = ({ data, colors, handleThemeChange }) => {
       text-decoration: none;
       z-index: 300000;
     `,
-    settingsIcon: css`
-      border: none;
-    `,
     navContainer: css`
       display: flex;
       justify-content: space-between;
@@ -33,11 +30,11 @@ const Navigation = ({ data, colors, handleThemeChange }) => {
         </li>
         <li>
           <Link to="arkiv" css={styles.links}>
-            Arkiv
+            <FeatherIcon icon="archive" />
           </Link>
         </li>
         <li>
-          <FeatherIcon css={styles.settingsIcon} icon={"settings"} />
+          <FeatherIcon icon={"settings"} />
         </li>
       </ul>
       <Settings

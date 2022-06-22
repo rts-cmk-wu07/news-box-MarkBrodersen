@@ -21,7 +21,7 @@ function App() {
   const colors = theme;
   const styles = {
     container: css`
-      background: ${colors.secondary_2};
+      background: ${colors.secondary_1};
     `,
   };
 
