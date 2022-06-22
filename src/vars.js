@@ -1,14 +1,4 @@
 export const vars = {
-  base: {
-    headingPri: "30pt",
-    headingSec: "24pt",
-    sectionHeading: "18pt",
-    subTitle: "18pt",
-    cardTitle: "15pt",
-    cardCopy: "15pt",
-    bodyCopy: "14pt",
-    timeStamp: "12pt",
-  },
   light: {
     primary_1: "#87bcbf",
     primary_2: "#D97D54",
@@ -20,6 +10,7 @@ export const vars = {
     text_1: "#1b1c2d",
     text_2: "#6e8ca0",
     text_3: "#ffffff",
+    text_2A: "#ffffff80",
     text_light: "#F0F3F4",
     text_dark: "#1B1C20",
   },
@@ -34,6 +25,7 @@ export const vars = {
     text_1: "#F0F3F4",
     text_2: "#809EB2",
     text_3: "#000000",
+    text_208A: "#00000080",
     text_light: "#F0F3F4",
     text_dark: "#1B1C20",
   },

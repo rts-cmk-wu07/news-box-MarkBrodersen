@@ -1,10 +1,12 @@
 /** @jsxImportSource @emotion/react */
 import { css } from "@emotion/react";
 import FeatherIcon from "feather-icons-react";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
+import Heading from "./Comps/Heading";
 
 import Settings from "./Settings";
 const Navigation = ({ data, colors, handleThemeChange }) => {
+  const location = useLocation();
   const styles = {
     links: css`
       color: ${colors.primary_1};
@@ -27,14 +29,18 @@ const Navigation = ({ data, colors, handleThemeChange }) => {
     <div>
       <ul css={styles.navContainer}>
         <li>
-          <Link to="home" css={styles.links}>
-            Home
-          </Link>
+          {location.pathname === "/home" ? (
+            <Link to="archive" css={styles.links}>
+              <FeatherIcon icon="inbox" />
+            </Link>
+          ) : (
+            <Link to="home" css={styles.links}>
+              <FeatherIcon icon="chevron-left" />
+            </Link>
+          )}
         </li>
         <li>
-          <Link to="arkiv" css={styles.links}>
-            Arkiv
-          </Link>
+          <Heading title={location.pathname === "/home" ? "Home" : "Archive"} />
         </li>
         <li>
           <FeatherIcon css={styles.settingsIcon} icon={"settings"} />

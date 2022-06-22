@@ -1,16 +1,14 @@
 import apiContext from "../context/apiContext";
 import { useContext } from "react";
-import ArticleSections from "../ArticleSections";
+import Sections from "../Sections";
+import SearchForm from "../SearchForm";
 const Home = () => {
   const data = useContext(apiContext);
-  const sections = [...new Set(data.map((item) => item.section))];
   return (
-    <div>
-      {sections &&
-        sections.map((DropDown) => (
-          <ArticleSections key={DropDown} section={DropDown} />
-        ))}
-    </div>
+    <main>
+      <SearchForm />
+      {data && <Sections data={data} />}
+    </main>
   );
 };
 

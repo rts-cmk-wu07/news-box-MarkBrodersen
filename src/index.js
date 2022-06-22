@@ -13,7 +13,7 @@ root.render(
       <Routes>
         <Route path="/" element={<App />}>
           <Route path="/home" element={<Home />} />
-          <Route path="/arkiv" element={<Arkiv />} />
+          <Route path="/archive" element={<Arkiv />} />
         </Route>
       </Routes>
     </BrowserRouter>

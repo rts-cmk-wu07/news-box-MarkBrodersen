@@ -1,32 +1,14 @@
-/** @jsxImportSource @emotion/react */
-import { css } from "@emotion/react";
-import { useContext } from "react";
-import ThemeContext from "../context/themeContext";
-import apiContext from "../context/apiContext";
-
-import ArkivSections from "../ArkivSections";
+import Sections from "../Sections";
+import SearchForm from "../SearchForm";
 const Arkiv = () => {
-  const data = useContext(apiContext);
-  const colors = useContext(ThemeContext);
-
-  const styles = {
-    test: css`
-      color: ${colors.text_1};
-    `,
-  };
-  const sections = [...new Set(data.map((item) => item.section))];
-
-  const filtedArtical = data.filter((artical) => {
-    return sections === artical.section;
-  });
+  const ls = localStorage.getItem("archive");
+  const data = JSON.parse(ls);
+  console.log(data);
   return (
-    <div>
-      <div css={styles.test}>322</div>
-      {filtedArtical &&
-        filtedArtical.map((section) => (
-          <ArkivSections key={section} colors={colors} data={data} />
-        ))}
-    </div>
+    <main>
+      <SearchForm />
+      {data && <Sections data={data} />}
+    </main>
   );
 };
 
