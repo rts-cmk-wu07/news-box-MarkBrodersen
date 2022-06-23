@@ -15,7 +15,7 @@ const SearchForm = ({ searchText }) => {
   const style = {
     form: css`
       width: 95%;
-      margin: 25px auto;
+      margin: 0 auto;
       background-color: ${colors.secondary_1};
       display: flex;
       justify-content: center;
@@ -39,20 +39,18 @@ const SearchForm = ({ searchText }) => {
     `,
   };
   return (
-    <div>
-      <form css={style.form} onSubmit={handleSubmit}>
-        <input
-          type="text"
-          css={style.input}
-          aria-label="searchbar"
-          placeholder="Search news"
-          onChange={(e) => setText(e.target.value)}
-        />
-        <button type="submit" css={style.btn}>
-          <FeatherIcon icon="search" />
-        </button>
-      </form>
-    </div>
+    <form css={style.form} onSubmit={handleSubmit}>
+      <input
+        type="text"
+        css={style.input}
+        aria-label="searchbar"
+        placeholder="Search news"
+        onChange={(e) => setText(e.target.value)}
+      />
+      <button type="submit" css={style.btn}>
+        <FeatherIcon icon="search" />
+      </button>
+    </form>
   );
 };
 

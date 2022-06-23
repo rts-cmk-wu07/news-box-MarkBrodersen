@@ -1,7 +1,7 @@
 /** @jsxImportSource @emotion/react */
 import { css } from "@emotion/react";
 import FeatherIcon from "feather-icons-react";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useContext } from "react";
 import Articles from "./Comps/Articles";
 import ThemeContext from "./context/themeContext";
@@ -16,7 +16,7 @@ import {
 } from "react-swipeable-list";
 import "react-swipeable-list/dist/styles.css";
 
-const Sectionss = ({ title, data, section, archiveData }) => {
+const Sectionss = ({ title, data, section }) => {
   const colors = useContext(ThemeContext);
 
   const [isOpen, setIsOpen] = useState(false);
@@ -27,7 +27,6 @@ const Sectionss = ({ title, data, section, archiveData }) => {
   const filtedArtical = (articles) => {
     return articles.filter((article) => article.section === title);
   };
-
   const [numberOfArticles, setNumberOfArticles] = useState(
     filtedArtical(data).length
   );
@@ -77,7 +76,6 @@ const Sectionss = ({ title, data, section, archiveData }) => {
           setPopUpIsOpen(false);
         }, 5000);
       } else {
-        console.log("duplicate");
         setPopUpIsOpen(true);
         setPopUp(`You have already saved this article`);
         setTimeout(() => {
@@ -86,13 +84,26 @@ const Sectionss = ({ title, data, section, archiveData }) => {
       }
     }
   };
+
+  const [isDelete, setIsDelete] = useState(false);
+  useEffect(() => {
+    if (location.pathname === "/home") {
+      setIsDelete(true);
+    } else {
+      setIsDelete(false);
+    }
+  }, []);
   const articleHeight = 6;
   const styles = {
     title: css`
       color: ${colors.text_1};
+      margin-top: 10px;
     `,
     container: css`
       display: flex;
+      border-top: 1px solid ${colors.secondary_2};
+      border-bottom: 1px solid ${colors.secondary_2};
+      padding: 10px 15px;
     `,
     DUPEcontainer: css`
       color: ${colors.primary_2};
@@ -115,9 +126,6 @@ const Sectionss = ({ title, data, section, archiveData }) => {
         numberOfArticles * articleHeight
       }rem + (${numberOfArticles} * 1px));
     `}
-    `,
-    refPoint: css`
-      position: relative;
     `,
     square: css`
       margin: 0 0 -4px 0;
@@ -160,6 +168,9 @@ const Sectionss = ({ title, data, section, archiveData }) => {
       width: 12px;
       border-radius: 0 0 0 1px; ;
     `,
+    refPoint: css`
+      position: relative;
+    `,
     checkbox: css`
       display: none;
     `,
@@ -170,17 +181,16 @@ const Sectionss = ({ title, data, section, archiveData }) => {
       display: flex;
       align-items: center;
       justify-content: center;
-      background: ${colors.primary_1};
       color: ${colors.text_light};
       width: 7rem;
+      background: ${colors.primary_1};
     `,
-    sectionContainer: css`
-      margin-bottom: 3rem;
-    `,
+    sectionContainer: css``,
+    label: css``,
   };
   return (
     <section css={styles.sectionContainer}>
-      <label htmlFor={section}>
+      <label htmlFor={section} css={styles.label}>
         <div css={styles.container}>
           <div css={styles.DUPEcontainer}>
             <div css={styles.refPoint}>
@@ -221,7 +231,11 @@ const Sectionss = ({ title, data, section, archiveData }) => {
                     destructive={location.pathname === "/archive"}
                   >
                     <div css={styles.action}>
-                      <FeatherIcon icon="inbox" />
+                      <FeatherIcon
+                        icon={
+                          location.pathname === "/home" ? "inbox" : "delete"
+                        }
+                      />
                     </div>
                   </SwipeAction>
                 </TrailingActions>

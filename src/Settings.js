@@ -6,9 +6,12 @@ import { fallDown as Menu } from "react-burger-menu";
 
 import SettingsCheckbox from "./Comps/SettingsCheckbox";
 import SectionContext from "./context/sectionContext";
-const NavBar = ({ data, colors, handleThemeChange }) => {
+import apiContext from "./context/apiContext";
+
+const NavBar = ({ colors, handleThemeChange }) => {
   const { sections, setSectionsActive } = useContext(SectionContext);
   const { sectionList, sectionsActive } = sections;
+  const data = useContext(apiContext);
   const styles = {
     settingsContainer: css`
       background: ${colors.secondary_1};
@@ -17,7 +20,19 @@ const NavBar = ({ data, colors, handleThemeChange }) => {
       border: none;
     `,
   };
-
+  const sorted = data.sort((a, b) => {
+    if (a.section < b.section) {
+      return -1;
+    }
+    if (a.section > b.section) {
+      return 1;
+    }
+    return 0;
+  });
+  const titles = [...new Set(sorted.map((item) => item.section))];
+  const filteredTitles = sections.sectionsActive.filter((title) => {
+    return titles.includes(title);
+  });
   return (
     <div>
       <Menu
@@ -27,10 +42,10 @@ const NavBar = ({ data, colors, handleThemeChange }) => {
       >
         <div id="wrappes" css={styles.settings}>
           {sectionList &&
-            sectionList.map((section, index) => (
+            filteredTitles.map((section) => (
               <SettingsCheckbox
                 colors={colors}
-                key={index}
+                key={section}
                 section={section}
                 state={sectionsActive.includes(section)}
                 sectionsActive={sectionsActive}

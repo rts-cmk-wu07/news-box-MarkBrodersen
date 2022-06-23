@@ -49,8 +49,6 @@ const SettingsCheckbox = ({
   const clickHandler = () => {
     setIsActive(!isActive);
     if (isActive) {
-      console.log(sectionsActive.indexOf(section));
-      console.log(sectionsActive);
       setSectionsActive(sectionsActive.filter((title) => title !== section));
     } else {
       const newSections = [...sectionsActive, section].sort();

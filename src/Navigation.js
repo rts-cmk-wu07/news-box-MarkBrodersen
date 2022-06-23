@@ -15,10 +15,15 @@ const Navigation = ({ data, colors, handleThemeChange }) => {
     `,
     navContainer: css`
       display: flex;
-      justify-content: space-between;
+      align-content: center;
+      justify-content: space-around;
+      padding: 25px 0;
       & li {
         list-style: none;
       }
+    `,
+    test: css`
+      color: red;
     `,
   };
 

@@ -3,103 +3,11 @@
   margin: 0;
   box-sizing: border-box;
 }
-.headingPri {
-  font-size: 30pt;
-  font-weight: bold;
-}
-.headingSec {
-  font-size: 24pt;
-  font-weight: bold;
-}
-.sectionHeading {
-  font-size: 18pt;
-  font-weight: bold;
-}
-.subTitle {
-  font-size: 18pt;
-}
-.cardTitle {
-  font-size: 15pt;
-  font-weight: bold;
-}
-.cardCopy {
-  font-size: 15pt;
-  font-weight: lighter;
-}
-.bodyCopy {
-  font-size: 14pt;
-  font-weight: lighter;
-}
-.timeStamp {
-  font-size: 12pt;
-  font-weight: lighter;
-}
-
-.settingsContainer--disable {
-  position: fixed;
-  width: 100%;
-  height: 0;
-  opacity: 0;
-  transition: all 0.5s;
-}
-.settingsContainerr {
-  height: 90vh;
-  opacity: 1;
-  transition: all 0.5s;
-}
-.rad-label {
-  display: flex;
-  align-items: center;
-  border-radius: 100px;
-  padding: 14px 16px;
-  margin: 10px 0;
-  cursor: pointer;
-  transition: 0.3s;
-  position: relative;
-  overflow: hidden;
-}
-
-.rad-label:focus-within {
-  background: hsla(0, 0%, 80%, 0.14);
-}
-
-.rad-input {
-  position: absolute;
-  left: 0;
-  top: 0;
-  width: 1px;
-  height: 1px;
-  opacity: 0;
-  z-index: -1;
-}
-
-.rad-design {
-  width: 60px;
-  height: 35px;
-  border-radius: 100px;
-
-  position: relative;
-}
-
-.rad-design::before {
-  content: "";
-  display: inline-block;
-  width: inherit;
-  height: inherit;
-  border-radius: inherit;
-  background: hsl(0, 0%, 90%);
-  transform: scale(1);
-  transition: 0.3s;
-}
-
-.rad-input:checked + .rad-design::before {
-  transform: scale(0);
-}
 #react-burger-menu-btn {
   width: 25px !important;
   height: 25px !important;
-  top: 0 !important;
-  right: 0 !important;
+  top: 24px !important;
+  right: 47px !important;
   left: auto !important;
 }
 .bm-burger-bars {

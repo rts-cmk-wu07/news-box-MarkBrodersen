@@ -14,7 +14,6 @@ const Sections = ({ data }) => {
     }
     return 0;
   });
-
   const titles = [...new Set(sorted.map((item) => item.section))];
   const filteredTitles = sectionSeption.sectionsActive.filter((title) => {
     return titles.includes(title);

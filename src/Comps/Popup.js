@@ -50,7 +50,6 @@ const PopUp = ({ popUp, popUpIsOpen }) => {
                     height: 10rem;
                     opacity: 1;
                     padding: 2rem; 
-                    box-shadow: 0 0.25rem 2rem ${colors.primary_1}a0;
                     pointer-events: all;
                     & svg {
                         transform: scale(1) rotate(0);
