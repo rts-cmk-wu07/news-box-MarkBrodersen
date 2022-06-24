@@ -1,7 +1,7 @@
 /** @jsxImportSource @emotion/react */
 import { css } from "@emotion/react";
 import FeatherIcon from "feather-icons-react";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { useContext } from "react";
 import Articles from "./Comps/Articles";
 import ThemeContext from "./context/themeContext";
@@ -85,15 +85,7 @@ const Sectionss = ({ title, data, section }) => {
     }
   };
 
-  const [isDelete, setIsDelete] = useState(false);
-  useEffect(() => {
-    if (location.pathname === "/home") {
-      setIsDelete(true);
-    } else {
-      setIsDelete(false);
-    }
-  }, []);
-  const articleHeight = 6;
+  const articleHeight = 103;
   const styles = {
     title: css`
       color: ${colors.text_1};
@@ -124,7 +116,7 @@ const Sectionss = ({ title, data, section }) => {
       `
       height: calc(${
         numberOfArticles * articleHeight
-      }rem + (${numberOfArticles} * 1px));
+      }px + (${numberOfArticles} * 1px));
     `}
     `,
     square: css`
@@ -185,9 +177,13 @@ const Sectionss = ({ title, data, section }) => {
       width: 7rem;
       background: ${colors.primary_1};
     `,
+    colorSwitch: css`
+      background: ${colors.primary_3};
+    `,
     sectionContainer: css``,
     label: css``,
   };
+
   return (
     <section css={styles.sectionContainer}>
       <label htmlFor={section} css={styles.label}>
@@ -230,7 +226,7 @@ const Sectionss = ({ title, data, section }) => {
                     onClick={() => swipeHandler(data)}
                     destructive={location.pathname === "/archive"}
                   >
-                    <div css={styles.action}>
+                    <div id="action" css={styles.action}>
                       <FeatherIcon
                         icon={
                           location.pathname === "/home" ? "inbox" : "delete"

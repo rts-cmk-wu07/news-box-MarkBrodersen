@@ -15,8 +15,7 @@ const SearchForm = ({ searchText }) => {
   const style = {
     form: css`
       width: 95%;
-      margin: 0 auto;
-      background-color: ${colors.secondary_1};
+      margin: 25px auto;
       display: flex;
       justify-content: center;
       border-bottom: 1px solid ${colors.secondary_2};

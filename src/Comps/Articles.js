@@ -22,6 +22,7 @@ const Articles = ({ data, colors }) => {
       height: 4.5rem;
       width: 4.5rem;
       border-radius: 100px;
+      margin: 0 15px;
     `,
     title: css`
       white-space: nowrap;

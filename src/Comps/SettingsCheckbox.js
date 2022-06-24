@@ -40,7 +40,7 @@ const SettingsCheckbox = ({
       height: 1.7rem;
       width: 1.7rem;
       background: ${colors.text_3};
-      transition: 0.2s;
+      transition: 0.3s;
       border-radius: 100px;
       left: ${isActive ? "calc(100% - 1.85rem)" : "0.15rem"};
       box-shadow: 0 0.25rem 0.5rem ${colors.text_dark}20;

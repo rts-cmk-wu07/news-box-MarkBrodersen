@@ -18,6 +18,7 @@ const Navigation = ({ data, colors, handleThemeChange }) => {
       align-content: center;
       justify-content: space-around;
       padding: 25px 0;
+      border-bottom: 1px solid ${colors.secondary_2};
       & li {
         list-style: none;
       }
